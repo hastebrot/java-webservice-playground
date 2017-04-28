@@ -15,6 +15,7 @@ buildscript {
 
     dependencies {
         classpath(kotlinModule("gradle-plugin", "1.1.0"))
+        classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.0-M4")
     }
 }
 
@@ -30,6 +31,7 @@ plugins {
 apply {
     plugin("java")
     plugin("kotlin")
+    plugin("org.junit.platform.gradle.plugin")
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -44,6 +46,11 @@ dependencies {
     compile(kotlinModule("stdlib", "1.1.0"))
     compile("org.jooby:jooby-netty:1.1.0")
     compile("org.jooby:jooby-lang-kotlin:1.1.0")
+
+    testCompile("io.kotlintest:kotlintest:2.0.1")
+    testCompile("com.winterbe:expekt:0.5.0")
+    testCompile("org.jetbrains.spek:spek-api:1.1.0")
+    testRuntime("org.jetbrains.spek:spek-junit-platform-engine:1.1.0")
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -65,12 +72,12 @@ sourceSets {
     main {
         java.setSrcDirs(files("src"))
         kotlin.setSrcDirs(files("src"))
-        resources.setSrcDirs(files())
+        resources.setSrcDirs(files("src/res"))
     }
     test {
         java.setSrcDirs(files("test"))
         kotlin.setSrcDirs(files("test"))
-        resources.setSrcDirs(files())
+        resources.setSrcDirs(files("test/res"))
     }
 }
 
