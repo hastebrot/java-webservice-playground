@@ -42,6 +42,8 @@ repositories {
 
 dependencies {
     compile(kotlinModule("stdlib", "1.1.0"))
+    compile("org.jooby:jooby-netty:1.1.0")
+    compile("org.jooby:jooby-lang-kotlin:1.1.0")
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -77,5 +79,5 @@ sourceSets {
 //—————————————————————————————————————————————————————————————————————————————————————————————————
 
 application {
-    mainClassName = "mainKt"
+    mainClassName = "serverKt"
 }
